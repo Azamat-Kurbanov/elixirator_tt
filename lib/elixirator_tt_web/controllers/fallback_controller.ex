@@ -13,4 +13,18 @@ defmodule ElixiratorTtWeb.FallbackController do
     |> put_view(ElixiratorTtWeb.ErrorView)
     |> render(:"404")
   end
+
+  def call(conn, {:error, :bad_request}) do
+    conn
+    |> put_status(:bad_request)
+    |> put_view(ElixiratorTtWeb.ErrorView)
+    |> render(:"400")
+  end
+
+  def call(conn, {:error, :internal_server_error}) do
+    conn
+    |> put_status(:internal_server_error)
+    |> put_view(ElixiratorTtWeb.ErrorView)
+    |> render(:"500")
+  end
 end
