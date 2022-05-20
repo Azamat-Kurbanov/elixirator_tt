@@ -7,5 +7,8 @@ defmodule ElixiratorTtWeb.Router do
 
   scope "/api", ElixiratorTtWeb do
     pipe_through :api
+
+    get "/fuelcalculate", FuelCalculateController, :index
+    post "/fuelcalculate", FuelCalculateController, :calculateFuel
   end
 end
