@@ -23,3 +23,5 @@ erl_crash.dump
 elixirator_tt-*.tar
 
 .vscode
+
+.elixir_ls

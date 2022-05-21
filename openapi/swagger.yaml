@@ -11,6 +11,19 @@ schemes:
 - "http"
 paths:
   /calculate:
+    get:
+      summary: "Welcome text"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Welcome text"
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+                example: "Welcome text"
     post:
       consumes:
       - "application/json"
@@ -39,7 +52,7 @@ definitions:
   FlyingPlan:
     type: "object"
     properties:
-      shipMass:
+      ship_mass:
         type: "integer"
         format: "int64"
         example: 28801
@@ -47,6 +60,9 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/Point"
+    required:
+    - "ship_mass"
+    - "points"
   Point:
     type: "object"
     properties:
@@ -58,18 +74,35 @@ definitions:
         type: "number"
         format: "float"
         example: 1.62
+    required:
+    - "launch"
+    - "land"
   ApiResponse:
     type: "object"
     properties:
-      fuelConsumption:
-        type: "integer"
-        format: "int64"
+      fuel_consumption:
+        type: "number"
+        format: "float"
+        example: 36778.0
+    required:
+    - "fuel_consumption"
   Errors:
     type: "object"
     properties:
       errors:
-        type: object
+        type: "object"
         properties:
           detail:
             type: "string"
             example: "Error message"
+          source:
+            type: "object"
+            properties:
+              pointer: 
+                type: "string"
+                example: "/points/0/launch"
+          title: 
+            type: "string"
+            example: "Invalid value"
+        required:
+        - "detail"

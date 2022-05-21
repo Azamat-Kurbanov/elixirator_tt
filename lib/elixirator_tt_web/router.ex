@@ -3,12 +3,14 @@ defmodule ElixiratorTtWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug OpenApiSpex.Plug.PutApiSpec, module: ElixiratorTtWeb.ApiSpec
   end
 
-  scope "/api", ElixiratorTtWeb do
+  scope "/api" do
     pipe_through :api
 
-    get "/fuelcalculate", FuelCalculateController, :index
-    post "/fuelcalculate", FuelCalculateController, :calculateFuel
+    get "/fuelcalculate", ElixiratorTtWeb.FuelCalculateController, :index
+    post "/fuelcalculate", ElixiratorTtWeb.FuelCalculateController, :calculateFuel
+    get "/openapi", OpenApiSpex.Plug.RenderSpec, []
   end
 end

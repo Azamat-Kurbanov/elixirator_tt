@@ -12,11 +12,20 @@ restart:
 	make start
 
 rebuild:
-	docker compose build
+	make build
 	make start
 
 down:
 	docker compose down
+
+deps.get:
+	docker compose run --rm phoenix mix deps.get
+
+compile:
+	docker compose run --rm phoenix mix compile
+
+run.tests:
+	docker compose run --rm phoenix mix test
 
 mix:
 	docker compose run --rm phoenix mix $(command)

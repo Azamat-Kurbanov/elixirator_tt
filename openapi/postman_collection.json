@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "05ca56ff-d4dd-4fd3-b655-304fba0b320e",
+		"name": "ElixiratorTt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "775382"
+	},
+	"item": [
+		{
+			"name": "welcome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/api/fuelcalculate",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"fuelcalculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculate fuel consumption",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ship_mass\": 28801,\n    \"points\": [\n        {\n            \"launch\": 9.807,\n            \"land\": 1.62\n        },\n        {\n            \"launch\": 1.62,\n            \"land\": 9.807\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/api/fuelcalculate",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"fuelcalculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

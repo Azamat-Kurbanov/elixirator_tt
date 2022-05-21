@@ -12,6 +12,6 @@ defmodule ElixiratorTtWeb.FuelCalculateView do
   end
 
   def render("result.json", %{result: result}) do
-    %{fuelConsumption: result}
+    %{fuel_consumption: result}
   end
 end
